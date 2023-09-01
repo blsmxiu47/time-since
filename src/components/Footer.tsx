@@ -1,12 +1,12 @@
 export default function Footer() {
     return (
-        <footer>
+        <footer className="px-4 sm:px-6 py-6 mt-24">
             <ul>
                 <li>
-                    Github
+                    <span className="dark:text-gray-200">Github</span>
                 </li>
                 <li>
-                    LinkedIn
+                    <span className="dark:text-gray-200">LinkedIn</span>
                 </li>
             </ul>
         </footer>

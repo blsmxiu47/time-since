@@ -1,15 +1,12 @@
-import Header from './components/Header'
+import Layout from './components/Layout'
 import DurationCalculator from './components/DurationCalculator'
-import Footer from './components/Footer'
 import './App.css'
 
 function App() {
   return (
-    <div className='App'>
-      <Header />
+    <Layout>
       <DurationCalculator />
-      <Footer />
-    </div>
+    </Layout>
 )
 }
 
