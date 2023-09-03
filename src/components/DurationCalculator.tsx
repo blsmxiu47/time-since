@@ -30,6 +30,11 @@ const DurationCalculator: React.FC = () => {
     const calculateDuration = () => {
         if (!startDate || !endDate) return;
 
+        if (startDate > endDate) {
+            alert('Start date must be before end date');
+            return;
+        }
+
         const start = new Date(startDate);
         const end = new Date(endDate);
 
@@ -90,53 +95,65 @@ const DurationCalculator: React.FC = () => {
         });
     };
 
+    const hasResults = Object.values(duration).some((value) => value !== null);
+
     return (
-        <div>
+        <div className="mt-4 mx-2">
             <h1 className="text-xl text-black dark:text-gray-300">Duration Calculator</h1>
             <p className="text-black dark:text-gray-300">Calculate duration between two times or dates</p>
-            <form>
-                <label
-                    className="text-black dark:text-gray-300"
-                    htmlFor='start-date'
-                >
-                    Start Date
-                </label>
-                <input
-                    id='start-date'
-                    type='date'
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                />
-                <label
-                    className="text-black dark:text-gray-300"
-                    htmlFor='end-date'
-                >
-                    End Date
-                </label>
-                <input
-                    id='end-date'
-                    type='date'
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                />
+            <form className="mb-4" onSubmit={(e) => e.preventDefault()}>
+                <div className="block my-2">
+                    <label
+                        className="inline-block w-20 mr-2 text-black dark:text-gray-300"
+                        htmlFor='start-date'
+                    >
+                        Start Date:
+                    </label>
+                    <input
+                        id='start-date'
+                        className='rounded-lg bg-gray-600 dark:bg-gray-100'
+                        type='date'
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                    />
+                </div>
+                <div className="block mb-2">
+                    <label
+                        className="inline-block w-20 mr-2 text-black dark:text-gray-300"
+                        htmlFor='end-date'
+                    >
+                        End Date:
+                    </label>
+                    <input
+                        id='end-date'
+                        className='rounded-lg bg-gray-600 dark:bg-gray-100'
+                        type='date'
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                    />
+                </div>
                 <button
-                    className="text-black dark:text-gray-300"
+                    className="bg-teal-500 hover:bg-teal-400 text-white font-bold py-2 px-4 border-b-4 border-teal-700 hover:border-teal-500 rounded active:border-b-2 active:h-11"
                     type='submit'
                     onClick={calculateDuration}
                 >
                     Calculate
                 </button>
             </form>
-            {
-                duration.yearsPart !== null && duration.monthsPart !== null && duration.daysPart !== null &&
-                <p>Total Duration: {duration.yearsPart} years, {duration.monthsPart} months, {duration.daysPart} days</p>
-            }
-            {duration.weeks !== null && <p>Total Weeks: {duration.weeks}</p>}
-            {duration.days !== null && <p>Total Days: {duration.days}</p>}
-            {duration.hours !== null && <p>Total Hours: {duration.hours}</p>}
-            {duration.minutes !== null && <p>Total Minutes: {duration.minutes}</p>}
-            {duration.seconds !== null && <p>Total Seconds: {duration.seconds}</p>}
-            {duration.milliseconds !== null && <p>Total Milliseconds: {duration.milliseconds}</p>}
+            {hasResults &&
+                <div className="rounded-lg mx-2 sm:mx-4 max-w-fit p-2 sm:px-4 dark:text-gray-300 bg-black dark:bg-white bg-opacity-10 dark:bg-opacity-10">
+                    {/* <p>Total Duration: {duration.yearsPart} years, {duration.monthsPart} months, {duration.daysPart} days</p> */}
+                    {
+                        duration.yearsPart !== null && duration.monthsPart !== null && duration.daysPart !== null &&
+                        <p>Total Duration: {duration.yearsPart} years, {duration.monthsPart} months, {duration.daysPart} days</p>
+                    }
+                    {duration.weeks !== null && <p>Total Weeks: {duration.weeks}</p>}
+                    {duration.days !== null && <p>Total Days: {duration.days}</p>}
+                    {duration.hours !== null && <p>Total Hours: {duration.hours}</p>}
+                    {duration.minutes !== null && <p>Total Minutes: {duration.minutes}</p>}
+                    {duration.seconds !== null && <p>Total Seconds: {duration.seconds}</p>}
+                    {duration.milliseconds !== null && <p>Total Milliseconds: {duration.milliseconds}</p>}
+                </div>}
         </div>
     )
 }

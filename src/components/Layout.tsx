@@ -9,7 +9,7 @@ const Layout: React.FunctionComponent<Props> = ( props ) => {
     return (
         <div className="min-h-screen flex flex-col bg-white dark:bg-gray-800">
             <Header />
-                <main className="flex-grow container mx-auto ox-4 sm:px-6">
+                <main className="flex-grow container mx-auto ox-4 px-1 sm:px-4">
                     {props.children}
                 </main>
             <Footer />
