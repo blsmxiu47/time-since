@@ -111,7 +111,7 @@ const DurationCalculator: React.FC = () => {
                     </label>
                     <input
                         id='start-date'
-                        className='rounded-lg bg-gray-600 dark:bg-gray-100'
+                        className='rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
                         type='date'
                         value={startDate}
                         onChange={(e) => setStartDate(e.target.value)}
@@ -126,14 +126,14 @@ const DurationCalculator: React.FC = () => {
                     </label>
                     <input
                         id='end-date'
-                        className='rounded-lg bg-gray-600 dark:bg-gray-100'
+                        className='rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
                         type='date'
                         value={endDate}
                         onChange={(e) => setEndDate(e.target.value)}
                     />
                 </div>
                 <button
-                    className="bg-teal-500 hover:bg-teal-400 text-white font-bold py-2 px-4 border-b-4 border-teal-700 hover:border-teal-500 rounded active:border-b-2 active:h-11"
+                    className="bg-teal-500 dark:bg-teal-600 hover:bg-teal-400 dark:hover:bg-teal-500 text-white font-bold py-2 px-4 border-b-4 border-teal-700 dark:border-teal-900 hover:border-teal-500 dark:hover:border-teal-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
                     type='submit'
                     onClick={calculateDuration}
                 >
