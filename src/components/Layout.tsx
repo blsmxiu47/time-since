@@ -17,4 +17,4 @@ const Layout: React.FunctionComponent<Props> = ( props ) => {
     )
 }
 
-export default Layout
+export default Layout;

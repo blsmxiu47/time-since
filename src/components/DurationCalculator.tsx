@@ -142,7 +142,6 @@ const DurationCalculator: React.FC = () => {
             </form>
             {hasResults &&
                 <div className="rounded-lg mx-2 sm:mx-4 max-w-fit p-2 sm:px-4 dark:text-gray-300 bg-black dark:bg-white bg-opacity-10 dark:bg-opacity-10">
-                    {/* <p>Total Duration: {duration.yearsPart} years, {duration.monthsPart} months, {duration.daysPart} days</p> */}
                     {
                         duration.yearsPart !== null && duration.monthsPart !== null && duration.daysPart !== null &&
                         <p>Total Duration: {duration.yearsPart} years, {duration.monthsPart} months, {duration.daysPart} days</p>

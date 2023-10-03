@@ -1,6 +1,6 @@
 import DarkModeToggle from "./DarkModeToggle";
 
-export default function Header() {
+const Header: React.FC = () => {
     return (
         <header className="border-b dark:border-gray-300">
             <div className="container mx-auto px-4 sm:px-6 py-4">
@@ -18,3 +18,5 @@ export default function Header() {
         </header>
     )
 }
+
+export default Header;

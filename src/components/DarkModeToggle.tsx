@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const DarkModeToggle = () => {
+const DarkModeToggle: React.FC = () => {
     const [isDark, setIsDark] = useState(true);
 
     // Function to handle the dark mode toggle and set the theme for the whole app
