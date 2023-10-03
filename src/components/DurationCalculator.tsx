@@ -14,7 +14,13 @@ type Duration = {
 
 const DurationCalculator: React.FC = () => {
     const [startDate, setStartDate] = useState<string>('');
+    const [startTimeHour, setStartTimeHour] = useState<string>('');
+    const [startTimeMinute, setStartTimeMinute] = useState<string>('');
+    const [startTimeSecond, setStartTimeSecond] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
+    const [endTimeHour, setEndTimeHour] = useState<string>('');
+    const [endTimeMinute, setEndTimeMinute] = useState<string>('');
+    const [endTimeSecond, setEndTimeSecond] = useState<string>('');
     const [duration, setDuration] = useState<Duration>({
         milliseconds: null,
         seconds: null,
@@ -104,7 +110,7 @@ const DurationCalculator: React.FC = () => {
             <form className="mb-4" onSubmit={(e) => e.preventDefault()}>
                 <div className="block my-2">
                     <label
-                        className="inline-block w-20 mr-2 text-black dark:text-gray-300"
+                        className="block mb-2 font-bold text-black dark:text-gray-300"
                         htmlFor='start-date'
                     >
                         Start Date:
@@ -117,9 +123,69 @@ const DurationCalculator: React.FC = () => {
                         onChange={(e) => setStartDate(e.target.value)}
                     />
                 </div>
-                <div className="block mb-2">
+                <span className='mb-2 font-bold text-black dark:text-gray-300'>Start Time (optional):</span>
+                <div className="flex flex-row my-2">
+                    <div className='block p-4'>
+                        <label
+                            className="inline-block mr-2 text-black dark:text-gray-300"
+                            htmlFor='start-time-hour'
+                        >
+                            Hour:
+                        </label>
+                        <input
+                            id='start-time-hour'
+                            pattern='\d{0,2}'
+                            className='w-12 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                            type='number'
+                            min='0'
+                            max='23'
+                            value={startTimeHour}
+                            onChange={(e) => setStartTimeHour(e.target.value)}
+                            placeholder='0'
+                        />
+                    </div>
+                    <div className='block p-4'>
+                        <label
+                            className="inline-block mr-2 text-black dark:text-gray-300"
+                            htmlFor='start-time-minute'
+                        >
+                            Minute:
+                        </label>
+                        <input
+                            id='start-time-minute'
+                            pattern='\d{0,2}'
+                            className='w-12 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                            type='number'
+                            min='0'
+                            max='59'
+                            value={startTimeMinute}
+                            onChange={(e) => setStartTimeMinute(e.target.value)}
+                            placeholder='00'
+                        />
+                    </div>
+                    <div className='block p-4'>
+                        <label
+                            className="inline-block mr-2 text-black dark:text-gray-300"
+                            htmlFor='start-time-second'
+                        >
+                            Second:
+                        </label>
+                        <input
+                            id='start-time-second'
+                            pattern='\d{0,2}'
+                            className='w-12 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                            type='number'
+                            min='0'
+                            max='59'
+                            value={startTimeSecond}
+                            onChange={(e) => setStartTimeSecond(e.target.value)}
+                            placeholder='00'
+                        />
+                    </div>
+                </div>
+                <div className="block my-2">
                     <label
-                        className="inline-block w-20 mr-2 text-black dark:text-gray-300"
+                        className="block mb-2 font-bold text-black dark:text-gray-300"
                         htmlFor='end-date'
                     >
                         End Date:
@@ -132,8 +198,68 @@ const DurationCalculator: React.FC = () => {
                         onChange={(e) => setEndDate(e.target.value)}
                     />
                 </div>
+                <span className='mb-2 font-bold text-black dark:text-gray-300'>End Time (optional):</span>
+                <div className="flex flex-row my-2">
+                    <div className='block p-4'>
+                        <label
+                            className="inline-block mr-2 text-black dark:text-gray-300"
+                            htmlFor='end-time-hour'
+                        >
+                            Hour:
+                        </label>
+                        <input
+                            id='end-time-hour'
+                            pattern='\d{0,2}'
+                            className='w-12 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                            type='number'
+                            min='0'
+                            max='23'
+                            value={endTimeHour}
+                            onChange={(e) => setEndTimeHour(e.target.value)}
+                            placeholder='0'
+                        />
+                    </div>
+                    <div className='block p-4'>
+                        <label
+                            className="inline-block mr-2 text-black dark:text-gray-300"
+                            htmlFor='end-time-minute'
+                        >
+                            Minute:
+                        </label>
+                        <input
+                            id='end-time-minute'
+                            pattern='\d{0,2}'
+                            className='w-12 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                            type='number'
+                            min='0'
+                            max='59'
+                            value={endTimeMinute}
+                            onChange={(e) => setEndTimeMinute(e.target.value)}
+                            placeholder='00'
+                        />
+                    </div>
+                    <div className='block p-4'>
+                        <label
+                            className="inline-block mr-2 text-black dark:text-gray-300"
+                            htmlFor='end-time-second'
+                        >
+                            Second:
+                        </label>
+                        <input
+                            id='end-time-second'
+                            pattern='\d{0,2}'
+                            className='w-12 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                            type='number'
+                            min='0'
+                            max='59'
+                            value={endTimeSecond}
+                            onChange={(e) => setEndTimeSecond(e.target.value)}
+                            placeholder='00'
+                        />
+                    </div>
+                </div>
                 <button
-                    className="bg-teal-500 dark:bg-teal-600 hover:bg-teal-400 dark:hover:bg-teal-500 text-white font-bold py-2 px-4 border-b-4 border-teal-700 dark:border-teal-900 hover:border-teal-500 dark:hover:border-teal-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
+                    className="bg-teal-500 dark:bg-teal-600 hover:bg-teal-400 dark:hover:bg-teal-500 text-white font-bold my-2 py-2 px-4 border-b-4 border-teal-700 dark:border-teal-900 hover:border-teal-500 dark:hover:border-teal-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
                     type='submit'
                     onClick={calculateDuration}
                 >
