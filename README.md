@@ -8,6 +8,20 @@ View the app: **[Live Demo](TKTKTKTKTKTKTKTTK)**
 
 Simple web app built with React, Typescript, and Tailwind to calculate different units of time between two dates.
 
+## Features
+
+* Responsive design
+* Dark mode
+
+## TODO
+
+* Add a TODAY button to set the start date to the current date
+* Add a TODAY button to set the end date to the current date
+* Add a NOW button to set the start time to the current time
+* Add a NOW button to set the end time to the current time
+* Add a RESET button to reset the start and end dates and times to the default values
+* Round time units or add a toggle to round time units
+
 ## Tech Stack
 
 * Vite
