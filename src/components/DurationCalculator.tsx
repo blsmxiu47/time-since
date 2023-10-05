@@ -117,154 +117,158 @@ const DurationCalculator: React.FC = () => {
             <h1 className="text-xl text-black dark:text-gray-300">Duration Calculator</h1>
             <p className="text-black dark:text-gray-300">Calculate duration between two times or dates</p>
             <form className="mb-4" onSubmit={(e) => e.preventDefault()}>
-                <div className="block my-2">
-                    <label
-                        className="block mb-2 font-bold text-black dark:text-gray-300"
-                        htmlFor='start-date'
-                    >
-                        Start Date:
-                    </label>
-                    <input
-                        id='start-date'
-                        className='rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
-                        type='date'
-                        value={startDate}
-                        onChange={(e) => setStartDate(e.target.value)}
-                    />
+                <div className="my-4 border-b max-w-lg">
+                    <div className="block my-2">
+                        <label
+                            className="block mb-2 font-bold text-black dark:text-gray-300"
+                            htmlFor='start-date'
+                        >
+                            Start Date:
+                        </label>
+                        <input
+                            id='start-date'
+                            className='rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                            type='date'
+                            value={startDate}
+                            onChange={(e) => setStartDate(e.target.value)}
+                        />
+                    </div>
+                    <span className='mb-2 font-bold text-black dark:text-gray-300'>Start Time (optional):</span>
+                    <div className="flex flex-row my-2">
+                        <div className='block px-2'>
+                            <label
+                                className="inline-block mr-2 text-black dark:text-gray-300"
+                                htmlFor='start-time-hour'
+                            >
+                                Hour:
+                            </label>
+                            <input
+                                id='start-time-hour'
+                                pattern='\d{0,2}'
+                                className='w-16 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                                type='number'
+                                min='0'
+                                max='23'
+                                value={startTimeHour}
+                                onChange={(e) => setStartTimeHour(e.target.value)}
+                                placeholder='0'
+                            />
+                        </div>
+                        <div className='block px-2'>
+                            <label
+                                className="inline-block mr-2 text-black dark:text-gray-300"
+                                htmlFor='start-time-minute'
+                            >
+                                Minute:
+                            </label>
+                            <input
+                                id='start-time-minute'
+                                pattern='\d{0,2}'
+                                className='w-16 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                                type='number'
+                                min='0'
+                                max='59'
+                                value={startTimeMinute}
+                                onChange={(e) => setStartTimeMinute(e.target.value)}
+                                placeholder='00'
+                            />
+                        </div>
+                        <div className='block px-2'>
+                            <label
+                                className="inline-block mr-2 text-black dark:text-gray-300"
+                                htmlFor='start-time-second'
+                            >
+                                Second:
+                            </label>
+                            <input
+                                id='start-time-second'
+                                pattern='\d{0,2}'
+                                className='w-16 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                                type='number'
+                                min='0'
+                                max='59'
+                                value={startTimeSecond}
+                                onChange={(e) => setStartTimeSecond(e.target.value)}
+                                placeholder='00'
+                            />
+                        </div>
+                    </div>
                 </div>
-                <span className='mb-2 font-bold text-black dark:text-gray-300'>Start Time (optional):</span>
-                <div className="flex flex-row my-2">
-                    <div className='block p-4'>
+                <div className="my-4 border-b max-w-lg">
+                    <div className="block my-2">
                         <label
-                            className="inline-block mr-2 text-black dark:text-gray-300"
-                            htmlFor='start-time-hour'
+                            className="block mb-2 font-bold text-black dark:text-gray-300"
+                            htmlFor='end-date'
                         >
-                            Hour:
+                            End Date:
                         </label>
                         <input
-                            id='start-time-hour'
-                            pattern='\d{0,2}'
-                            className='w-12 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
-                            type='number'
-                            min='0'
-                            max='23'
-                            value={startTimeHour}
-                            onChange={(e) => setStartTimeHour(e.target.value)}
-                            placeholder='0'
+                            id='end-date'
+                            className='rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                            type='date'
+                            value={endDate}
+                            onChange={(e) => setEndDate(e.target.value)}
                         />
                     </div>
-                    <div className='block p-4'>
-                        <label
-                            className="inline-block mr-2 text-black dark:text-gray-300"
-                            htmlFor='start-time-minute'
-                        >
-                            Minute:
-                        </label>
-                        <input
-                            id='start-time-minute'
-                            pattern='\d{0,2}'
-                            className='w-12 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
-                            type='number'
-                            min='0'
-                            max='59'
-                            value={startTimeMinute}
-                            onChange={(e) => setStartTimeMinute(e.target.value)}
-                            placeholder='00'
-                        />
-                    </div>
-                    <div className='block p-4'>
-                        <label
-                            className="inline-block mr-2 text-black dark:text-gray-300"
-                            htmlFor='start-time-second'
-                        >
-                            Second:
-                        </label>
-                        <input
-                            id='start-time-second'
-                            pattern='\d{0,2}'
-                            className='w-12 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
-                            type='number'
-                            min='0'
-                            max='59'
-                            value={startTimeSecond}
-                            onChange={(e) => setStartTimeSecond(e.target.value)}
-                            placeholder='00'
-                        />
-                    </div>
-                </div>
-                <div className="block my-2">
-                    <label
-                        className="block mb-2 font-bold text-black dark:text-gray-300"
-                        htmlFor='end-date'
-                    >
-                        End Date:
-                    </label>
-                    <input
-                        id='end-date'
-                        className='rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
-                        type='date'
-                        value={endDate}
-                        onChange={(e) => setEndDate(e.target.value)}
-                    />
-                </div>
-                <span className='mb-2 font-bold text-black dark:text-gray-300'>End Time (optional):</span>
-                <div className="flex flex-row my-2">
-                    <div className='block p-4'>
-                        <label
-                            className="inline-block mr-2 text-black dark:text-gray-300"
-                            htmlFor='end-time-hour'
-                        >
-                            Hour:
-                        </label>
-                        <input
-                            id='end-time-hour'
-                            pattern='\d{0,2}'
-                            className='w-12 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
-                            type='number'
-                            min='0'
-                            max='23'
-                            value={endTimeHour}
-                            onChange={(e) => setEndTimeHour(e.target.value)}
-                            placeholder='0'
-                        />
-                    </div>
-                    <div className='block p-4'>
-                        <label
-                            className="inline-block mr-2 text-black dark:text-gray-300"
-                            htmlFor='end-time-minute'
-                        >
-                            Minute:
-                        </label>
-                        <input
-                            id='end-time-minute'
-                            pattern='\d{0,2}'
-                            className='w-12 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
-                            type='number'
-                            min='0'
-                            max='59'
-                            value={endTimeMinute}
-                            onChange={(e) => setEndTimeMinute(e.target.value)}
-                            placeholder='00'
-                        />
-                    </div>
-                    <div className='block p-4'>
-                        <label
-                            className="inline-block mr-2 text-black dark:text-gray-300"
-                            htmlFor='end-time-second'
-                        >
-                            Second:
-                        </label>
-                        <input
-                            id='end-time-second'
-                            pattern='\d{0,2}'
-                            className='w-12 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
-                            type='number'
-                            min='0'
-                            max='59'
-                            value={endTimeSecond}
-                            onChange={(e) => setEndTimeSecond(e.target.value)}
-                            placeholder='00'
-                        />
+                    <span className='mb-2 font-bold text-black dark:text-gray-300'>End Time (optional):</span>
+                    <div className="flex flex-row my-2">
+                        <div className='block px-2'>
+                            <label
+                                className="inline-block mr-2 text-black dark:text-gray-300"
+                                htmlFor='end-time-hour'
+                            >
+                                Hour:
+                            </label>
+                            <input
+                                id='end-time-hour'
+                                pattern='\d{0,2}'
+                                className='w-16 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                                type='number'
+                                min='0'
+                                max='23'
+                                value={endTimeHour}
+                                onChange={(e) => setEndTimeHour(e.target.value)}
+                                placeholder='0'
+                            />
+                        </div>
+                        <div className='block px-2'>
+                            <label
+                                className="inline-block mr-2 text-black dark:text-gray-300"
+                                htmlFor='end-time-minute'
+                            >
+                                Minute:
+                            </label>
+                            <input
+                                id='end-time-minute'
+                                pattern='\d{0,2}'
+                                className='w-16 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                                type='number'
+                                min='0'
+                                max='59'
+                                value={endTimeMinute}
+                                onChange={(e) => setEndTimeMinute(e.target.value)}
+                                placeholder='00'
+                            />
+                        </div>
+                        <div className='block px-2'>
+                            <label
+                                className="inline-block mr-2 text-black dark:text-gray-300"
+                                htmlFor='end-time-second'
+                            >
+                                Second:
+                            </label>
+                            <input
+                                id='end-time-second'
+                                pattern='\d{0,2}'
+                                className='w-16 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                                type='number'
+                                min='0'
+                                max='59'
+                                value={endTimeSecond}
+                                onChange={(e) => setEndTimeSecond(e.target.value)}
+                                placeholder='00'
+                            />
+                        </div>
                     </div>
                 </div>
                 <button
