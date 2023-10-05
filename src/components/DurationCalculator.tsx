@@ -36,16 +36,25 @@ const DurationCalculator: React.FC = () => {
     const calculateDuration = () => {
         if (!startDate || !endDate) return;
 
+        // convert components of start time to datetime
+        const startTime = new Date(startDate);
+        startTime.setHours(Number(startTimeHour));
+        startTime.setMinutes(Number(startTimeMinute));
+        startTime.setSeconds(Number(startTimeSecond));
+
+        // convert components of end time to datetime
+        const endTime = new Date(endDate);
+        endTime.setHours(Number(endTimeHour));
+        endTime.setMinutes(Number(endTimeMinute));
+        endTime.setSeconds(Number(endTimeSecond));
+
         if (startDate > endDate) {
             alert('Start date must be before end date');
             return;
         }
 
-        const start = new Date(startDate);
-        const end = new Date(endDate);
-
         // Calculate the time difference in milliseconds
-        const msDiff = Math.abs(end.getTime() - start.getTime());
+        const msDiff = Math.abs(endTime.getTime() - startTime.getTime());
 
         // Calculate the number of seconds
         const secondsDiff = msDiff / 1000;
@@ -59,12 +68,12 @@ const DurationCalculator: React.FC = () => {
         const weeksDiff = daysDiff / 7;
 
         // Calculate the total years, months, and days difference
-        const startYear = start.getFullYear();
-        const endYear = end.getFullYear();
-        const startMonth = start.getMonth();
-        const endMonth = end.getMonth();
-        const startDateOfMonth = start.getDate();
-        const endDateOfMonth = end.getDate(); 
+        const startYear = startTime.getFullYear();
+        const endYear = endTime.getFullYear();
+        const startMonth = startTime.getMonth();
+        const endMonth = endTime.getMonth();
+        const startDateOfMonth = startTime.getDate();
+        const endDateOfMonth = endTime.getDate(); 
         // Example: 1990-08-14~2021-01-05
         // Years: 30
         // Months: 4
