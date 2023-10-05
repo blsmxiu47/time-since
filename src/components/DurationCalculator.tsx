@@ -145,7 +145,7 @@ const DurationCalculator: React.FC = () => {
                             <input
                                 id='start-time-hour'
                                 pattern='\d{0,2}'
-                                className='w-16 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                                className='w-[4.5rem] text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
                                 type='number'
                                 min='0'
                                 max='23'
@@ -164,7 +164,7 @@ const DurationCalculator: React.FC = () => {
                             <input
                                 id='start-time-minute'
                                 pattern='\d{0,2}'
-                                className='w-16 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                                className='w-[4.5rem] text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
                                 type='number'
                                 min='0'
                                 max='59'
@@ -183,7 +183,7 @@ const DurationCalculator: React.FC = () => {
                             <input
                                 id='start-time-second'
                                 pattern='\d{0,2}'
-                                className='w-16 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                                className='w-[4.5rem] text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
                                 type='number'
                                 min='0'
                                 max='59'
@@ -222,7 +222,7 @@ const DurationCalculator: React.FC = () => {
                             <input
                                 id='end-time-hour'
                                 pattern='\d{0,2}'
-                                className='w-16 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                                className='w-[4.5rem] text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
                                 type='number'
                                 min='0'
                                 max='23'
@@ -241,7 +241,7 @@ const DurationCalculator: React.FC = () => {
                             <input
                                 id='end-time-minute'
                                 pattern='\d{0,2}'
-                                className='w-16 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                                className='w-[4.5rem] text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
                                 type='number'
                                 min='0'
                                 max='59'
@@ -260,7 +260,7 @@ const DurationCalculator: React.FC = () => {
                             <input
                                 id='end-time-second'
                                 pattern='\d{0,2}'
-                                className='w-16 text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                                className='w-[4.5rem] text-center rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
                                 type='number'
                                 min='0'
                                 max='59'
