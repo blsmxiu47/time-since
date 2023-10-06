@@ -146,7 +146,7 @@ const DurationCalculator: React.FC = () => {
         <div className="mt-4 mx-2">
             <h1 className="text-xl text-black dark:text-gray-300">Duration Calculator</h1>
             <p className="text-black dark:text-gray-300">Calculate duration between two times or dates</p>
-            <form className="mb-4" onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={(e) => e.preventDefault()}>
                 <div className="my-4 border-b max-w-lg">
                     <div className="block my-2">
                         <label
@@ -157,13 +157,13 @@ const DurationCalculator: React.FC = () => {
                         </label>
                         <input
                             id='start-date'
-                            className='rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700'
+                            className="rounded-lg bg-gray-100 dark:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
                             type='date'
                             value={startDate}
                             onChange={(e) => setStartDate(e.target.value)}
                         />
                         <button
-                            className="bg-red-500 dark:bg-red-600 hover:bg-red-400 dark:hover:bg-red-500 text-white font-bold my-2 py-2 px-4 border-b-4 border-red-700 dark:border-red-900 hover:border-red-500 dark:hover:border-red-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 ml-2"
+                            className="bg-emerald-500 dark:bg-emerald-600 hover:bg-emerald-400 dark:hover:bg-emerald-500 text-white font-bold my-2 py-2 px-4 border-b-4 border-emerald-700 dark:border-emerald-900 hover:border-emerald-500 dark:hover:border-emerald-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 ml-2"
                             onClick={()=>setToToday("start")}
                         >
                             TODAY
@@ -171,7 +171,7 @@ const DurationCalculator: React.FC = () => {
                     </div>
                     <span className='mb-2 font-bold text-black dark:text-gray-300'>Start Time (optional):</span>
                     <div className="flex flex-row my-2">
-                        <div className='block px-2'>
+                        <div className='px-2'>
                             <label
                                 className="inline-block mr-2 text-black dark:text-gray-300"
                                 htmlFor='start-time-hour'
@@ -190,7 +190,7 @@ const DurationCalculator: React.FC = () => {
                                 placeholder='0'
                             />
                         </div>
-                        <div className='block px-2'>
+                        <div className='px-2'>
                             <label
                                 className="inline-block mr-2 text-black dark:text-gray-300"
                                 htmlFor='start-time-minute'
@@ -209,7 +209,7 @@ const DurationCalculator: React.FC = () => {
                                 placeholder='00'
                             />
                         </div>
-                        <div className='block px-2'>
+                        <div className='px-2'>
                             <label
                                 className="inline-block mr-2 text-black dark:text-gray-300"
                                 htmlFor='start-time-second'
@@ -229,7 +229,7 @@ const DurationCalculator: React.FC = () => {
                             />
                         </div>
                         <button
-                            className="bg-red-500 dark:bg-red-600 hover:bg-red-400 dark:hover:bg-red-500 text-white font-bold my-2 py-2 px-4 border-b-4 border-red-700 dark:border-red-900 hover:border-red-500 dark:hover:border-red-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 ml-2"
+                            className="mt-6 mb-3 w-[4.5rem] bg-emerald-500 dark:bg-emerald-600 hover:bg-emerald-400 dark:hover:bg-emerald-500 text-white font-bold my-2 py-2 px-4 border-b-4 border-emerald-700 dark:border-emerald-900 hover:border-emerald-500 dark:hover:border-emerald-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
                             onClick={()=>setToNow("start")}
                         >
                             NOW
@@ -252,7 +252,7 @@ const DurationCalculator: React.FC = () => {
                             onChange={(e) => setEndDate(e.target.value)}
                         />
                         <button
-                            className="bg-red-500 dark:bg-red-600 hover:bg-red-400 dark:hover:bg-red-500 text-white font-bold my-2 py-2 px-4 border-b-4 border-red-700 dark:border-red-900 hover:border-red-500 dark:hover:border-red-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 ml-2"
+                            className="bg-emerald-500 dark:bg-emerald-600 hover:bg-emerald-400 dark:hover:bg-emerald-500 text-white font-bold my-2 py-2 px-4 border-b-4 border-emerald-700 dark:border-emerald-900 hover:border-emerald-500 dark:hover:border-emerald-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 ml-2"
                             onClick={()=>setToToday("end")}
                         >
                             TODAY
@@ -260,7 +260,7 @@ const DurationCalculator: React.FC = () => {
                     </div>
                     <span className='mb-2 font-bold text-black dark:text-gray-300'>End Time (optional):</span>
                     <div className="flex flex-row my-2">
-                        <div className='block px-2'>
+                        <div className='px-2'>
                             <label
                                 className="inline-block mr-2 text-black dark:text-gray-300"
                                 htmlFor='end-time-hour'
@@ -279,7 +279,7 @@ const DurationCalculator: React.FC = () => {
                                 placeholder='0'
                             />
                         </div>
-                        <div className='block px-2'>
+                        <div className='px-2'>
                             <label
                                 className="inline-block mr-2 text-black dark:text-gray-300"
                                 htmlFor='end-time-minute'
@@ -298,7 +298,7 @@ const DurationCalculator: React.FC = () => {
                                 placeholder='00'
                             />
                         </div>
-                        <div className='block px-2'>
+                        <div className='px-2'>
                             <label
                                 className="inline-block mr-2 text-black dark:text-gray-300"
                                 htmlFor='end-time-second'
@@ -318,7 +318,7 @@ const DurationCalculator: React.FC = () => {
                             />
                         </div>
                         <button
-                            className="bg-red-500 dark:bg-red-600 hover:bg-red-400 dark:hover:bg-red-500 text-white font-bold my-2 py-2 px-4 border-b-4 border-red-700 dark:border-red-900 hover:border-red-500 dark:hover:border-red-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 ml-2"
+                            className="mt-6 mb-3 w-[4.5rem] bg-emerald-500 dark:bg-emerald-600 hover:bg-emerald-400 dark:hover:bg-emerald-500 text-white font-bold py-2 px-4 border-b-4 border-emerald-700 dark:border-emerald-900 hover:border-emerald-500 dark:hover:border-emerald-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
                             onClick={()=>setToNow("end")}
                         >
                             NOW
