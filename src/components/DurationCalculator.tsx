@@ -14,13 +14,13 @@ type Duration = {
 
 const DurationCalculator: React.FC = () => {
     const [startDate, setStartDate] = useState<string>('');
-    const [startTimeHour, setStartTimeHour] = useState<string>('');
-    const [startTimeMinute, setStartTimeMinute] = useState<string>('');
-    const [startTimeSecond, setStartTimeSecond] = useState<string>('');
+    const [startTimeHour, setStartTimeHour] = useState<number | null>(null);
+    const [startTimeMinute, setStartTimeMinute] = useState<number | null>(null);
+    const [startTimeSecond, setStartTimeSecond] = useState<number | null>(null);
     const [endDate, setEndDate] = useState<string>('');
-    const [endTimeHour, setEndTimeHour] = useState<string>('');
-    const [endTimeMinute, setEndTimeMinute] = useState<string>('');
-    const [endTimeSecond, setEndTimeSecond] = useState<string>('');
+    const [endTimeHour, setEndTimeHour] = useState<number | null>(null);
+    const [endTimeMinute, setEndTimeMinute] = useState<number | null>(null);
+    const [endTimeSecond, setEndTimeSecond] = useState<number | null>(null);
     const [duration, setDuration] = useState<Duration>({
         milliseconds: null,
         seconds: null,
@@ -111,6 +111,36 @@ const DurationCalculator: React.FC = () => {
     };
 
     const hasResults = Object.values(duration).some((value) => value !== null);
+    
+    // To set the start date to the current date (via TODAY button)
+    const setToToday = (target: "start" | "end") => {
+        const now = new Date();
+        const formattedDate = now.toISOString().split('T')[0];
+        if (target === "start") setStartDate(formattedDate);
+        else if (target === "end") setEndDate(formattedDate);
+        else return;
+    }
+    
+    // To set the start datetime to the current date and time (via NOW button)
+    const setToNow = (target: "start" | "end") => {
+        const now = new Date();
+        const formattedDate = now.toISOString().split('T')[0];
+        if (target === "start") {
+            setStartDate(formattedDate);
+            setStartTimeHour(now.getHours());
+            setStartTimeMinute(now.getMinutes());
+            setStartTimeSecond(now.getSeconds());
+        }
+        else if (target === "end") {
+            setEndDate(formattedDate);
+            setEndTimeHour(now.getHours());
+            setEndTimeMinute(now.getMinutes());
+            setEndTimeSecond(now.getSeconds());
+        }
+        else {
+            return;
+        }
+    };
 
     return (
         <div className="mt-4 mx-2">
@@ -132,6 +162,12 @@ const DurationCalculator: React.FC = () => {
                             value={startDate}
                             onChange={(e) => setStartDate(e.target.value)}
                         />
+                        <button
+                            className="bg-red-500 dark:bg-red-600 hover:bg-red-400 dark:hover:bg-red-500 text-white font-bold my-2 py-2 px-4 border-b-4 border-red-700 dark:border-red-900 hover:border-red-500 dark:hover:border-red-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 ml-2"
+                            onClick={()=>setToToday("start")}
+                        >
+                            TODAY
+                        </button>
                     </div>
                     <span className='mb-2 font-bold text-black dark:text-gray-300'>Start Time (optional):</span>
                     <div className="flex flex-row my-2">
@@ -149,8 +185,8 @@ const DurationCalculator: React.FC = () => {
                                 type='number'
                                 min='0'
                                 max='23'
-                                value={startTimeHour}
-                                onChange={(e) => setStartTimeHour(e.target.value)}
+                                value={startTimeHour?.toString()}
+                                onChange={(e) => setStartTimeHour(parseInt(e.target.value))}
                                 placeholder='0'
                             />
                         </div>
@@ -168,8 +204,8 @@ const DurationCalculator: React.FC = () => {
                                 type='number'
                                 min='0'
                                 max='59'
-                                value={startTimeMinute}
-                                onChange={(e) => setStartTimeMinute(e.target.value)}
+                                value={startTimeMinute?.toString()}
+                                onChange={(e) => setStartTimeMinute(parseInt(e.target.value))}
                                 placeholder='00'
                             />
                         </div>
@@ -187,11 +223,17 @@ const DurationCalculator: React.FC = () => {
                                 type='number'
                                 min='0'
                                 max='59'
-                                value={startTimeSecond}
-                                onChange={(e) => setStartTimeSecond(e.target.value)}
+                                value={startTimeSecond?.toString()}
+                                onChange={(e) => setStartTimeSecond(parseInt(e.target.value))}
                                 placeholder='00'
                             />
                         </div>
+                        <button
+                            className="bg-red-500 dark:bg-red-600 hover:bg-red-400 dark:hover:bg-red-500 text-white font-bold my-2 py-2 px-4 border-b-4 border-red-700 dark:border-red-900 hover:border-red-500 dark:hover:border-red-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 ml-2"
+                            onClick={()=>setToNow("start")}
+                        >
+                            NOW
+                        </button>
                     </div>
                 </div>
                 <div className="my-4 border-b max-w-lg">
@@ -209,6 +251,12 @@ const DurationCalculator: React.FC = () => {
                             value={endDate}
                             onChange={(e) => setEndDate(e.target.value)}
                         />
+                        <button
+                            className="bg-red-500 dark:bg-red-600 hover:bg-red-400 dark:hover:bg-red-500 text-white font-bold my-2 py-2 px-4 border-b-4 border-red-700 dark:border-red-900 hover:border-red-500 dark:hover:border-red-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 ml-2"
+                            onClick={()=>setToToday("end")}
+                        >
+                            TODAY
+                        </button>
                     </div>
                     <span className='mb-2 font-bold text-black dark:text-gray-300'>End Time (optional):</span>
                     <div className="flex flex-row my-2">
@@ -226,8 +274,8 @@ const DurationCalculator: React.FC = () => {
                                 type='number'
                                 min='0'
                                 max='23'
-                                value={endTimeHour}
-                                onChange={(e) => setEndTimeHour(e.target.value)}
+                                value={endTimeHour?.toString()}
+                                onChange={(e) => setEndTimeHour(parseInt(e.target.value))}
                                 placeholder='0'
                             />
                         </div>
@@ -245,8 +293,8 @@ const DurationCalculator: React.FC = () => {
                                 type='number'
                                 min='0'
                                 max='59'
-                                value={endTimeMinute}
-                                onChange={(e) => setEndTimeMinute(e.target.value)}
+                                value={endTimeMinute?.toString()}
+                                onChange={(e) => setEndTimeMinute(parseInt(e.target.value))}
                                 placeholder='00'
                             />
                         </div>
@@ -264,11 +312,17 @@ const DurationCalculator: React.FC = () => {
                                 type='number'
                                 min='0'
                                 max='59'
-                                value={endTimeSecond}
-                                onChange={(e) => setEndTimeSecond(e.target.value)}
+                                value={endTimeSecond?.toString()}
+                                onChange={(e) => setEndTimeSecond(parseInt(e.target.value))}
                                 placeholder='00'
                             />
                         </div>
+                        <button
+                            className="bg-red-500 dark:bg-red-600 hover:bg-red-400 dark:hover:bg-red-500 text-white font-bold my-2 py-2 px-4 border-b-4 border-red-700 dark:border-red-900 hover:border-red-500 dark:hover:border-red-700 rounded active:border-b-2 active:h-11 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 ml-2"
+                            onClick={()=>setToNow("end")}
+                        >
+                            NOW
+                        </button>
                     </div>
                 </div>
                 <button
