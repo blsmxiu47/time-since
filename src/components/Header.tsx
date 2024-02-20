@@ -7,7 +7,7 @@ const Header: React.FC = () => {
                 <div className="flex items-center justify-between text-black-700 dark:text-gray-300">
                     <a href="#" className="focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700">
                         <span
-                            className="font-bold text-lg tracking-light whitespace-nowrap"
+                            className="font-bold text-[1.5rem] tracking-wide whitespace-nowrap"
                         >
                             Time Since...
                         </span>
