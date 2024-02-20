@@ -34,37 +34,24 @@ const DurationCalculator: React.FC = () => {
     });
 
     const calculateDuration = () => {
-        if (!startDate || !endDate) return;
-
-        // convert components of start time to datetime
+        if (!startDate || !endDate) {
+            return;
+        }
         const startTime = new Date(startDate);
-        startTime.setHours(Number(startTimeHour));
-        startTime.setMinutes(Number(startTimeMinute));
-        startTime.setSeconds(Number(startTimeSecond));
-
-        // convert components of end time to datetime
+        startTime.setHours(Number(startTimeHour), Number(startTimeMinute), Number(startTimeSecond));
         const endTime = new Date(endDate);
-        endTime.setHours(Number(endTimeHour));
-        endTime.setMinutes(Number(endTimeMinute));
-        endTime.setSeconds(Number(endTimeSecond));
-
+        endTime.setHours(Number(endTimeHour), Number(endTimeMinute), Number(endTimeSecond));
         if (startDate > endDate) {
+            // TODO: Show an error message to the user in a better UI/UX way
             alert('Start date must be before end date');
             return;
         }
 
-        // Calculate the time difference in milliseconds
         const msDiff = Math.abs(endTime.getTime() - startTime.getTime());
-
-        // Calculate the number of seconds
         const secondsDiff = msDiff / 1000;
-        // Calculate the number of minutes
         const minutesDiff = secondsDiff / 60;
-        // Calculate the number of hours
         const hoursDiff = minutesDiff / 60;
-        // Calculate the number of days
         const daysDiff = hoursDiff / 24;
-        // Calculate the number of weeks
         const weeksDiff = daysDiff / 7;
 
         // Calculate the total years, months, and days difference
@@ -96,7 +83,7 @@ const DurationCalculator: React.FC = () => {
             daysPart = endDateOfMonth - startDateOfMonth;
         }
 
-        // Set the state variable with the calculated number of days
+        // Set the state variable with the calculated differences
         setDuration({
             milliseconds: msDiff,
             seconds: secondsDiff,
@@ -116,29 +103,37 @@ const DurationCalculator: React.FC = () => {
     const setToToday = (target: "start" | "end") => {
         const now = new Date();
         const formattedDate = now.toISOString().split('T')[0];
-        if (target === "start") setStartDate(formattedDate);
-        else if (target === "end") setEndDate(formattedDate);
-        else return;
+        switch (target) {
+            case "start":
+                setStartDate(formattedDate);
+                break;
+            case "end":
+                setEndDate(formattedDate);
+                break;
+            default:
+                return;
+        }
     }
     
-    // To set the start datetime to the current date and time (via NOW button)
+    // To set the start datetime to the current date and time (down to seconds grain, via NOW button)
     const setToNow = (target: "start" | "end") => {
         const now = new Date();
         const formattedDate = now.toISOString().split('T')[0];
-        if (target === "start") {
-            setStartDate(formattedDate);
-            setStartTimeHour(now.getHours());
-            setStartTimeMinute(now.getMinutes());
-            setStartTimeSecond(now.getSeconds());
-        }
-        else if (target === "end") {
-            setEndDate(formattedDate);
-            setEndTimeHour(now.getHours());
-            setEndTimeMinute(now.getMinutes());
-            setEndTimeSecond(now.getSeconds());
-        }
-        else {
-            return;
+        switch (target) {
+            case "start":
+                setStartDate(formattedDate);
+                setStartTimeHour(now.getHours());
+                setStartTimeMinute(now.getMinutes());
+                setStartTimeSecond(now.getSeconds());
+                break;
+            case "end":
+                setEndDate(formattedDate);
+                setEndTimeHour(now.getHours());
+                setEndTimeMinute(now.getMinutes());
+                setEndTimeSecond(now.getSeconds());
+                break;
+            default:
+                return;
         }
     };
 
@@ -321,7 +316,7 @@ const DurationCalculator: React.FC = () => {
                                 />
                             </div>
                             <button
-                                className="mt-6 mb-3 w-[4.5rem] bg-emerald-500 dark:bg-emerald-600 hover:bg-emerald-400 dark:hover:bg-emerald-500 text-white font-bold py-2 px-4 border-b-4 border-emerald-700 dark:border-emerald-900 hover:border-emerald-500 dark:hover:border-emerald-700 rounded active:border-b-2 h-[2.65rem] focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
+                                className="mt-6 mb-3 py-2 px-4 w-[4.5rem] h-[2.65rem] bg-emerald-500 dark:bg-emerald-600 hover:bg-emerald-400 dark:hover:bg-emerald-500 text-white font-bold border-b-4 border-emerald-700 dark:border-emerald-900 hover:border-emerald-500 dark:hover:border-emerald-700 rounded active:border-b-2 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
                                 onClick={()=>setToNow("end")}
                             >
                                 NOW
@@ -329,7 +324,7 @@ const DurationCalculator: React.FC = () => {
                         </div>
                     </div>
                     <button
-                        className="bg-teal-500 dark:bg-teal-600 hover:bg-teal-400 dark:hover:bg-teal-500 text-white font-bold my-2 py-2 px-4 border-b-4 border-teal-700 dark:border-teal-900 hover:border-teal-500 dark:hover:border-teal-700 rounded active:border-b-2 active:h-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
+                        className="my-2 py-2 px-4 h-[2.65rem] text-white bg-teal-500 dark:bg-teal-600 hover:bg-teal-400 dark:hover:bg-teal-500 font-bold  border-b-4 border-teal-700 dark:border-teal-900 hover:border-teal-500 dark:hover:border-teal-700 rounded active:border-b-2 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
                         type='submit'
                         onClick={calculateDuration}
                     >
