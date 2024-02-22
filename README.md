@@ -2,7 +2,7 @@
 
 ![Time Since app screenshot](https://raw.githubusercontent.com/blsmxiu47/time-since/main/images/app-screenshot.png)
 
-View the app: **[Live Demo](https://time-since-app.netlify.app/)**
+View the app: **[Live Demo](https://time-since-dot-dot-dot.netlify.app/)**
 
 ## Description
 
