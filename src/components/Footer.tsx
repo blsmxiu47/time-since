@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
                 <li>
                     <a
                         href="https://github.com/blsmxiu47"
-                        className="flex items-center dark:text-gray-300 py-2 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
+                        className="flex items-center py-2 dark:text-gray-300 rounded focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
                         rel="noopener noreferrer"
                         target="_blank"
                     >
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
                 <li>
                     <a
                         href="https://www.linkedin.com/in/wes-warriner"
-                        className="flex items-center dark:text-gray-300 py-2 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
+                        className="flex items-center py-2 dark:text-gray-300 rounded focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
                         rel="noopener noreferrer"
                         target="_blank"
                     >
