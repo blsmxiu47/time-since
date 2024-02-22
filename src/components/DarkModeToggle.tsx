@@ -1,23 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const DarkModeToggle: React.FC = () => {
-    const [isDark, setIsDark] = useState(false);
+    const [isDark, setIsDark] = useState(document.documentElement.classList.contains('dark') ? true : false);
 
-    const handleThemeToggle = (isDark: boolean) => {
-        setIsDark(!isDark);
+    useEffect(() => {
         const root = document.documentElement;
-        const theme = isDark ? 'light' : 'dark';
-        root.classList.remove(isDark ? 'dark' : 'light');
+        const theme = isDark ? 'dark' : 'light';
+        root.classList.remove(isDark ? 'light' : 'dark');
         root.classList.add(theme);
         localStorage.setItem('theme', theme);
-    };
+    }, [isDark]);
 
     return (
         <button
             id="theme-toggle"
             type="button"
             className="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
-            onClick={() => handleThemeToggle(isDark)}
+            onClick={() => setIsDark(!isDark)}
         >
             {isDark &&
                 <svg
